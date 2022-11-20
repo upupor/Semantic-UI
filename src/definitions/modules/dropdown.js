@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI - Dropdown
+ * # Semantic UI - updropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19,7 +19,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.updropdown = function(parameters) {
+$.fn.upupdropdown = function(parameters) {
   var
     $allModules    = $(this),
     $document      = $(document),
@@ -40,8 +40,8 @@ $.fn.updropdown = function(parameters) {
     .each(function(elementIndex) {
       var
         settings          = ( $.isPlainObject(parameters) )
-          ? $.extend(true, {}, $.fn.updropdown.settings, parameters)
-          : $.extend({}, $.fn.updropdown.settings),
+          ? $.extend(true, {}, $.fn.upupdropdown.settings, parameters)
+          : $.extend({}, $.fn.upupdropdown.settings),
 
         className       = settings.className,
         message         = settings.message,
@@ -91,7 +91,7 @@ $.fn.updropdown = function(parameters) {
       module = {
 
         initialize: function() {
-          module.debug('Initializing updropdown', settings);
+          module.debug('Initializing upupdropdown', settings);
 
           if( module.is.alreadySetup() ) {
             module.setup.reference();
@@ -119,7 +119,7 @@ $.fn.updropdown = function(parameters) {
         },
 
         instantiate: function() {
-          module.verbose('Storing instance of updropdown', module);
+          module.verbose('Storing instance of upupdropdown', module);
           instance = module;
           $module
             .data(moduleNamespace, module)
@@ -127,7 +127,7 @@ $.fn.updropdown = function(parameters) {
         },
 
         destroy: function() {
-          module.verbose('Destroying previous updropdown', $module);
+          module.verbose('Destroying previous upupdropdown', $module);
           module.remove.tabbable();
           $module
             .off(eventNamespace)
@@ -340,14 +340,14 @@ $.fn.updropdown = function(parameters) {
             var
               selectValues  = module.get.selectValues()
             ;
-            module.debug('Dropdown initialized on a select', selectValues);
+            module.debug('updropdown initialized on a select', selectValues);
             if( $module.is('select') ) {
               $input = $module;
             }
             // see if select is placed correctly already
-            if($input.parent(selector.updropdown).length > 0) {
-              module.debug('UI updropdown already exists. Creating updropdown menu only');
-              $module = $input.closest(selector.updropdown);
+            if($input.parent(selector.upupdropdown).length > 0) {
+              module.debug('UI upupdropdown already exists. Creating upupdropdown menu only');
+              $module = $input.closest(selector.upupdropdown);
               if( !module.has.menu() ) {
                 module.create.menu();
               }
@@ -355,12 +355,12 @@ $.fn.updropdown = function(parameters) {
               module.setup.menu(selectValues);
             }
             else {
-              module.debug('Creating entire updropdown from select');
+              module.debug('Creating entire upupdropdown from select');
               $module = $('<div />')
                 .attr('class', $input.attr('class') )
                 .addClass(className.selection)
-                .addClass(className.updropdown)
-                .html( templates.updropdown(selectValues) )
+                .addClass(className.upupdropdown)
+                .html( templates.upupdropdown(selectValues) )
                 .insertBefore($input)
               ;
               if($input.hasClass(className.multiple) && $input.prop('multiple') === false) {
@@ -371,7 +371,7 @@ $.fn.updropdown = function(parameters) {
                 module.set.multiple();
               }
               if ($input.prop('disabled')) {
-                module.debug('Disabling updropdown');
+                module.debug('Disabling upupdropdown');
                 $module.addClass(className.disabled);
               }
               $input
@@ -387,9 +387,9 @@ $.fn.updropdown = function(parameters) {
             $item = $menu.find(selector.item);
           },
           reference: function() {
-            module.debug('Dropdown behavior was called on select, replacing with closest updropdown');
+            module.debug('updropdown behavior was called on select, replacing with closest upupdropdown');
             // replace module reference
-            $module  = $module.parent(selector.updropdown);
+            $module  = $module.parent(selector.upupdropdown);
             instance = $module.data(moduleNamespace);
             element  = $module.get(0);
             module.refresh();
@@ -469,7 +469,7 @@ $.fn.updropdown = function(parameters) {
             module.queryRemote(module.get.query(), module.show);
           }
           if( module.can.show() && !module.is.active() ) {
-            module.debug('Showing updropdown');
+            module.debug('Showing upupdropdown');
             if(module.has.message() && !(module.has.maxSelections() || module.has.allResultsFiltered()) ) {
               module.remove.message();
             }
@@ -497,7 +497,7 @@ $.fn.updropdown = function(parameters) {
             : function(){}
           ;
           if( module.is.active() && !module.is.animatingOutward() ) {
-            module.debug('Hiding updropdown');
+            module.debug('Hiding upupdropdown');
             if(settings.onHide.call(element) !== false) {
               module.animate.hide(function() {
                 module.remove.visible();
@@ -508,11 +508,11 @@ $.fn.updropdown = function(parameters) {
         },
 
         hideOthers: function() {
-          module.verbose('Finding other updropdowns to hide');
+          module.verbose('Finding other upupdropdowns to hide');
           $allModules
             .not($module)
               .has(selector.menu + '.' + className.visible)
-                .updropdown('hide')
+                .upupdropdown('hide')
           ;
         },
 
@@ -698,7 +698,7 @@ $.fn.updropdown = function(parameters) {
                   }
                 }
                 else {
-                  module.verbose('All items filtered, hiding updropdown', searchTerm);
+                  module.verbose('All items filtered, hiding upupdropdown', searchTerm);
                   module.hideMenu();
                 }
               }
@@ -930,7 +930,7 @@ $.fn.updropdown = function(parameters) {
             if(!settings.allowAdditions) {
               module.clear();
             }
-            module.debug('Creating updropdown with specified values', values);
+            module.debug('Creating upupdropdown with specified values', values);
             module.setup.menu({values: values});
             $.each(values, function(index, item) {
               if(item.selected == true) {
@@ -1506,7 +1506,7 @@ $.fn.updropdown = function(parameters) {
 
                 // escape (close menu)
                 if(pressedKey == keys.escape) {
-                  module.verbose('Escape key pressed, closing updropdown');
+                  module.verbose('Escape key pressed, closing upupdropdown');
                   module.hide();
                 }
 
@@ -1518,7 +1518,7 @@ $.fn.updropdown = function(parameters) {
                 }
                 // down arrow (open menu)
                 if(pressedKey == keys.downArrow && !module.is.visible()) {
-                  module.verbose('Down key pressed, showing updropdown');
+                  module.verbose('Down key pressed, showing upupdropdown');
                   module.show();
                   event.preventDefault();
                 }
@@ -1577,7 +1577,7 @@ $.fn.updropdown = function(parameters) {
               return true;
             }
             else {
-              module.verbose('Event occurred in updropdown, canceling callback');
+              module.verbose('Event occurred in upupdropdown, canceling callback');
               return false;
             }
           },
@@ -1599,7 +1599,7 @@ $.fn.updropdown = function(parameters) {
               return true;
             }
             else {
-              module.verbose('Event occurred in updropdown menu, canceling callback');
+              module.verbose('Event occurred in upupdropdown menu, canceling callback');
               return false;
             }
           }
@@ -1959,7 +1959,7 @@ $.fn.updropdown = function(parameters) {
                     }
                   }
                   else if(strict) {
-                    module.verbose('Ambiguous updropdown value using strict type check', $choice, value);
+                    module.verbose('Ambiguous upupdropdown value using strict type check', $choice, value);
                     if( optionValue === value || optionText === value) {
                       $selectedItem = $choice;
                       return true;
@@ -2260,7 +2260,7 @@ $.fn.updropdown = function(parameters) {
           },
           tabbable: function() {
             if( module.is.searchSelection() ) {
-              module.debug('Added tabindex to searchable updropdown');
+              module.debug('Added tabindex to searchable upupdropdown');
               $search
                 .val('')
                 .attr('tabindex', 0)
@@ -2270,7 +2270,7 @@ $.fn.updropdown = function(parameters) {
               ;
             }
             else {
-              module.debug('Added tabindex to updropdown');
+              module.debug('Added tabindex to upupdropdown');
               if( $module.attr('tabindex') === undefined) {
                 $module
                   .attr('tabindex', 0)
@@ -2999,7 +2999,7 @@ $.fn.updropdown = function(parameters) {
           },
           tabbable: function() {
             if( module.is.searchSelection() ) {
-              module.debug('Searchable updropdown initialized');
+              module.debug('Searchable upupdropdown initialized');
               $search
                 .removeAttr('tabindex')
               ;
@@ -3008,7 +3008,7 @@ $.fn.updropdown = function(parameters) {
               ;
             }
             else {
-              module.debug('Simple selection updropdown initialized');
+              module.debug('Simple selection upupdropdown initialized');
               $module
                 .removeAttr('tabindex')
               ;
@@ -3148,7 +3148,7 @@ $.fn.updropdown = function(parameters) {
             return $(event.target).closest($icon).length > 0;
           },
           alreadySetup: function() {
-            return ($module.is('select') && $module.parent(selector.updropdown).data(moduleNamespace) !== undefined && $module.prev().length === 0);
+            return ($module.is('select') && $module.parent(selector.upupdropdown).data(moduleNamespace) !== undefined && $module.prev().length === 0);
           },
           animating: function($subMenu) {
             return ($subMenu)
@@ -3215,7 +3215,7 @@ $.fn.updropdown = function(parameters) {
             return $module.hasClass(className.search);
           },
           searchSelection: function() {
-            return ( module.has.search() && $search.parent(selector.updropdown).length === 1 );
+            return ( module.has.search() && $search.parent(selector.upupdropdown).length === 1 );
           },
           selection: function() {
             return $module.hasClass(className.selection);
@@ -3295,15 +3295,15 @@ $.fn.updropdown = function(parameters) {
               below : (calculations.context.scrollTop + calculations.context.height) >= calculations.menu.offset.top - calculations.context.offset.top + calculations.menu.height
             };
             if(onScreen.below) {
-              module.verbose('Dropdown can fit in context downward', onScreen);
+              module.verbose('updropdown can fit in context downward', onScreen);
               canOpenDownward = true;
             }
             else if(!onScreen.below && !onScreen.above) {
-              module.verbose('Dropdown cannot fit in either direction, favoring downward', onScreen);
+              module.verbose('updropdown cannot fit in either direction, favoring downward', onScreen);
               canOpenDownward = true;
             }
             else {
-              module.verbose('Dropdown cannot fit below, opening upward', onScreen);
+              module.verbose('updropdown cannot fit below, opening upward', onScreen);
               canOpenDownward = false;
             }
             $currentMenu.removeClass(className.loading);
@@ -3337,7 +3337,7 @@ $.fn.updropdown = function(parameters) {
             }
             isOffscreenRight = (calculations.menu.offset.left - calculations.context.offset.left + calculations.menu.width >= calculations.context.scrollLeft + calculations.context.width);
             if(isOffscreenRight) {
-              module.verbose('Dropdown cannot fit in context rightward', isOffscreenRight);
+              module.verbose('updropdown cannot fit in context rightward', isOffscreenRight);
               canOpenRightward = false;
             }
             $currentMenu.removeClass(className.loading);
@@ -3694,7 +3694,7 @@ $.fn.updropdown = function(parameters) {
   ;
 };
 
-$.fn.updropdown.settings = {
+$.fn.upupdropdown.settings = {
 
   silent                 : false,
   debug                  : false,
@@ -3704,9 +3704,9 @@ $.fn.updropdown.settings = {
   on                     : 'click',    // what event should show menu action on item selection
   action                 : 'activate', // action on item selection (nothing, activate, select, combo, hide, function(){})
 
-  values                 : false,      // specify values to use for updropdown
+  values                 : false,      // specify values to use for upupdropdown
 
-  clearable              : false,      // whether the value of the updropdown can be cleared
+  clearable              : false,      // whether the value of the upupdropdown can be cleared
 
   apiSettings            : false,
   selectOnKeydown        : true,       // Whether selection should occur automatically when keyboard shortcuts used
@@ -3718,8 +3718,8 @@ $.fn.updropdown.settings = {
   throttle               : 200,        // How long to wait after last user input to search remotely
 
   context                : window,     // Context to use when determining if on screen
-  direction              : 'auto',     // Whether updropdown should always open in one direction
-  keepOnScreen           : true,       // Whether updropdown should check whether it is on screen before showing
+  direction              : 'auto',     // Whether upupdropdown should always open in one direction
+  keepOnScreen           : true,       // Whether upupdropdown should check whether it is on screen before showing
 
   match                  : 'both',     // what to match against with search selection (both, text, or label)
   fullTextSearch         : false,      // search anywhere in value (set to 'exact' to require exact matches)
@@ -3743,7 +3743,7 @@ $.fn.updropdown.settings = {
   allowTab               : true,       // add tabindex to element
   allowCategorySelection : false,      // allow elements with sub-menus to be selected
 
-  fireOnInit             : false,      // Whether callbacks should fire when initializing updropdown values
+  fireOnInit             : false,      // Whether callbacks should fire when initializing upupdropdown values
 
   transition             : 'auto',     // auto transition will slide down or up based on direction
   duration               : 200,        // duration of transition
@@ -3778,8 +3778,8 @@ $.fn.updropdown.settings = {
   onHide        : function(){},
 
   /* Component */
-  name           : 'Dropdown',
-  namespace      : 'updropdown',
+  name           : 'updropdown',
+  namespace      : 'upupdropdown',
 
   message: {
     addResult     : 'Add <b>{term}</b>',
@@ -3790,8 +3790,8 @@ $.fn.updropdown.settings = {
   },
 
   error : {
-    action          : 'You called a updropdown action that was not defined',
-    alreadySetup    : 'Once a select has been initialized behaviors must be called on the created ui dropdown',
+    action          : 'You called a upupdropdown action that was not defined',
+    alreadySetup    : 'Once a select has been initialized behaviors must be called on the created ui updropdown',
     labels          : 'Allowing user additions currently requires the use of labels.',
     missingMultiple : '<select> requires multiple property to be set to correctly preserve multiple values',
     method          : 'The method you called is not defined.',
@@ -3816,10 +3816,10 @@ $.fn.updropdown.settings = {
   // property names for remote query
   fields: {
     remoteValues : 'results',  // grouping for api results
-    values       : 'values',   // grouping for all dropdown values
+    values       : 'values',   // grouping for all updropdown values
     disabled     : 'disabled', // whether value should be disabled
-    name         : 'name',     // displayed dropdown text
-    value        : 'value',    // actual dropdown value
+    name         : 'name',     // displayed updropdown text
+    value        : 'value',    // actual updropdown value
     text         : 'text'      // displayed text when selected
   },
 
@@ -3839,9 +3839,9 @@ $.fn.updropdown.settings = {
 
   selector : {
     addition     : '.addition',
-    dropdown     : '.ui.dropdown',
+    updropdown     : '.ui.updropdown',
     hidden       : '.hidden',
-    icon         : '> .dropdown.icon',
+    icon         : '> .updropdown.icon',
     input        : '> input[type="hidden"], > select',
     item         : '.item',
     label        : '> .label',
@@ -3849,7 +3849,7 @@ $.fn.updropdown.settings = {
     siblingLabel : '.label',
     menu         : '.menu',
     message      : '.message',
-    menuIcon     : '.dropdown.icon',
+    menuIcon     : '.updropdown.icon',
     search       : 'input.search, .menu > .search > input, .menu input.search',
     sizer        : '> input.sizer',
     text         : '> .text:not(.icon)',
@@ -3863,7 +3863,7 @@ $.fn.updropdown.settings = {
     clear       : 'clear',
     disabled    : 'disabled',
     empty       : 'empty',
-    dropdown    : 'ui dropdown',
+    updropdown    : 'ui updropdown',
     filtered    : 'filtered',
     hidden      : 'hidden transition',
     item        : 'item',
@@ -3885,16 +3885,16 @@ $.fn.updropdown.settings = {
 };
 
 /* Templates */
-$.fn.dropdown.settings.templates = {
+$.fn.updropdown.settings.templates = {
 
-  // generates dropdown from select values
-  dropdown: function(select) {
+  // generates updropdown from select values
+  updropdown: function(select) {
     var
       placeholder = select.placeholder || false,
       values      = select.values || {},
       html        = ''
     ;
-    html +=  '<i class="dropdown icon"></i>';
+    html +=  '<i class="updropdown icon"></i>';
     if(select.placeholder) {
       html += '<div class="default text">' + placeholder + '</div>';
     }
