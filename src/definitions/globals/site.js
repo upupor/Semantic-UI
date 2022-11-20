@@ -441,7 +441,7 @@ $.site.settings = {
     'api',
     'checkbox',
     'dimmer',
-    'dropdown',
+    'updropdown',
     'embed',
     'form',
     'modal',

@@ -322,7 +322,7 @@ $.fn.popup = function(parameters) {
         show: function(callback) {
           callback = callback || function(){};
           module.debug('Showing pop-up', settings.transition);
-          if(module.is.hidden() && !( module.is.active() && module.is.dropdown()) ) {
+          if(module.is.hidden() && !( module.is.active() && module.is.updropdown()) ) {
             if( !module.exists() ) {
               module.create();
             }
@@ -1122,8 +1122,8 @@ $.fn.popup = function(parameters) {
           visible: function() {
             return ($popup !== undefined && $popup.hasClass(className.popupVisible));
           },
-          dropdown: function() {
-            return $module.hasClass(className.dropdown);
+          updropdown: function() {
+            return $module.hasClass(className.updropdown);
           },
           hidden: function() {
             return !module.is.visible();
@@ -1472,7 +1472,7 @@ $.fn.popup.settings = {
     active       : 'active',
     basic        : 'basic',
     animating    : 'animating',
-    dropdown     : 'dropdown',
+    updropdown     : 'updropdown',
     fluid        : 'fluid',
     loading      : 'loading',
     popup        : 'ui popup',

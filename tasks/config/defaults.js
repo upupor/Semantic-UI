@@ -85,7 +85,7 @@ module.exports = {
     'accordion',
     'checkbox',
     'dimmer',
-    'dropdown',
+    'updropdown',
     'embed',
     'modal',
     'nag',

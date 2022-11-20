@@ -14,7 +14,7 @@
 *******************************/
 
 @type    : 'module';
-@element : 'dropdown';
+@element : 'updropdown';
 
 @import (multiple) '../../theme.config';
 
@@ -22,7 +22,7 @@
             Dropdown
 *******************************/
 
-.ui.dropdown {
+.ui.updropdown {
   cursor: pointer;
   position: relative;
   display: inline-block;
@@ -41,7 +41,7 @@
       Menu
 ---------------*/
 
-.ui.dropdown .menu {
+.ui.updropdown .menu {
   cursor: auto;
   position: absolute;
   display: none;
@@ -66,7 +66,7 @@
   will-change: transform, opacity;
 }
 
-.ui.dropdown .menu > * {
+.ui.updropdown .menu > * {
   white-space: nowrap;
 }
 
@@ -75,8 +75,8 @@
   Hidden Input
 ---------------*/
 
-.ui.dropdown > input:not(.search):first-child,
-.ui.dropdown > select {
+.ui.updropdown > input:not(.search):first-child,
+.ui.updropdown > select {
   display: none !important;
 }
 
@@ -84,18 +84,18 @@
  Dropdown Icon
 ---------------*/
 
-.ui.dropdown > .dropdown.icon {
+.ui.updropdown > .updropdown.icon {
   position: relative;
   width: auto;
   font-size: @dropdownIconSize;
   margin: @dropdownIconMargin;
 }
-.ui.dropdown .menu > .item .dropdown.icon {
+.ui.updropdown .menu > .item .updropdown.icon {
   width: auto;
   float: @itemDropdownIconFloat;
   margin: @itemDropdownIconMargin;
 }
-.ui.dropdown .menu > .item .dropdown.icon + .text {
+.ui.updropdown .menu > .item .updropdown.icon + .text {
   margin-right: @itemDropdownIconDistance;
 }
 
@@ -104,7 +104,7 @@
       Text
 ---------------*/
 
-.ui.dropdown > .text {
+.ui.updropdown > .text {
   display: inline-block;
   transition: @textTransition;
 }
@@ -113,7 +113,7 @@
     Menu Item
 ---------------*/
 
-.ui.dropdown .menu > .item {
+.ui.updropdown .menu > .item {
   position: relative;
   cursor: pointer;
   display: block;
@@ -133,7 +133,7 @@
   box-shadow: @itemBoxShadow;
   -webkit-touch-callout: none;
 }
-.ui.dropdown .menu > .item:first-child {
+.ui.updropdown .menu > .item:first-child {
   border-top-width: 0px;
 }
 
@@ -141,23 +141,23 @@
   Floated Content
 ---------------*/
 
-.ui.dropdown > .text > [class*="right floated"],
-.ui.dropdown .menu .item > [class*="right floated"] {
+.ui.updropdown > .text > [class*="right floated"],
+.ui.updropdown .menu .item > [class*="right floated"] {
   float: right !important;
   margin-right: 0em !important;
   margin-left: @floatedDistance !important;
 }
-.ui.dropdown > .text > [class*="left floated"],
-.ui.dropdown .menu .item > [class*="left floated"] {
+.ui.updropdown > .text > [class*="left floated"],
+.ui.updropdown .menu .item > [class*="left floated"] {
   float: left !important;
   margin-left: 0em !important;
   margin-right: @floatedDistance !important;
 }
 
-.ui.dropdown .menu .item > .icon.floated,
-.ui.dropdown .menu .item > .flag.floated,
-.ui.dropdown .menu .item > .image.floated,
-.ui.dropdown .menu .item > img.floated {
+.ui.updropdown .menu .item > .icon.floated,
+.ui.updropdown .menu .item > .flag.floated,
+.ui.updropdown .menu .item > .image.floated,
+.ui.updropdown .menu .item > img.floated {
   margin-top: @itemLineHeightOffset;
 }
 
@@ -166,7 +166,7 @@
   Menu Divider
 ---------------*/
 
-.ui.dropdown .menu > .header {
+.ui.updropdown .menu > .header {
   margin: @menuHeaderMargin;
   padding: @menuHeaderPadding;
   color: @menuHeaderColor;
@@ -175,27 +175,27 @@
   text-transform: @menuHeaderTextTransform;
 }
 
-.ui.dropdown .menu > .divider {
+.ui.updropdown .menu > .divider {
   border-top: @menuDividerBorder;
   height: 0em;
   margin: @menuDividerMargin;
 }
 
-.ui.dropdown.dropdown .menu > .input {
+.ui.updropdown.updropdown .menu > .input {
   width: auto;
   display: flex;
   margin: @menuInputMargin;
   min-width: @menuInputMinWidth;
 }
-.ui.dropdown .menu > .header + .input {
+.ui.updropdown .menu > .header + .input {
   margin-top: 0em;
 }
-.ui.dropdown .menu > .input:not(.transparent) input {
+.ui.updropdown .menu > .input:not(.transparent) input {
   padding: @menuInputPadding;
 }
-.ui.dropdown .menu > .input:not(.transparent) .button,
-.ui.dropdown .menu > .input:not(.transparent) .icon,
-.ui.dropdown .menu > .input:not(.transparent) .label {
+.ui.updropdown .menu > .input:not(.transparent) .button,
+.ui.updropdown .menu > .input:not(.transparent) .icon,
+.ui.updropdown .menu > .input:not(.transparent) .label {
   padding-top: @menuInputVerticalPadding;
   padding-bottom: @menuInputVerticalPadding;
 }
@@ -204,8 +204,8 @@
   Item Description
 -------------------*/
 
-.ui.dropdown > .text > .description,
-.ui.dropdown .menu > .item > .description {
+.ui.updropdown > .text > .description,
+.ui.updropdown .menu > .item > .description {
   float: @itemDescriptionFloat;
   margin: @itemDescriptionMargin;
   color: @itemDescriptionColor;
@@ -215,11 +215,11 @@
        Message
 -------------------*/
 
-.ui.dropdown .menu > .message {
+.ui.updropdown .menu > .message {
   padding: @messagePadding;
   font-weight: @messageFontWeight;
 }
-.ui.dropdown .menu > .message:not(.ui) {
+.ui.updropdown .menu > .message:not(.ui) {
   color: @messageColor;
 }
 
@@ -227,7 +227,7 @@
     Sub Menu
 ---------------*/
 
-.ui.dropdown .menu .menu {
+.ui.updropdown .menu .menu {
   top: @subMenuTop !important;
   left: @subMenuLeft;
   right: @subMenuRight;

@@ -71,7 +71,7 @@ module.exports = {
     'container',
     'dimmer',
     'divider',
-    'dropdown',
+    'updropdown',
     'embed',
     'feed',
     'flag',

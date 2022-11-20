@@ -19,7 +19,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.dropdown = function(parameters) {
+$.fn.updropdown = function(parameters) {
   var
     $allModules    = $(this),
     $document      = $(document),
@@ -40,8 +40,8 @@ $.fn.dropdown = function(parameters) {
     .each(function(elementIndex) {
       var
         settings          = ( $.isPlainObject(parameters) )
-          ? $.extend(true, {}, $.fn.dropdown.settings, parameters)
-          : $.extend({}, $.fn.dropdown.settings),
+          ? $.extend(true, {}, $.fn.updropdown.settings, parameters)
+          : $.extend({}, $.fn.updropdown.settings),
 
         className       = settings.className,
         message         = settings.message,
@@ -91,7 +91,7 @@ $.fn.dropdown = function(parameters) {
       module = {
 
         initialize: function() {
-          module.debug('Initializing dropdown', settings);
+          module.debug('Initializing updropdown', settings);
 
           if( module.is.alreadySetup() ) {
             module.setup.reference();
@@ -119,7 +119,7 @@ $.fn.dropdown = function(parameters) {
         },
 
         instantiate: function() {
-          module.verbose('Storing instance of dropdown', module);
+          module.verbose('Storing instance of updropdown', module);
           instance = module;
           $module
             .data(moduleNamespace, module)
@@ -127,7 +127,7 @@ $.fn.dropdown = function(parameters) {
         },
 
         destroy: function() {
-          module.verbose('Destroying previous dropdown', $module);
+          module.verbose('Destroying previous updropdown', $module);
           module.remove.tabbable();
           $module
             .off(eventNamespace)
@@ -345,9 +345,9 @@ $.fn.dropdown = function(parameters) {
               $input = $module;
             }
             // see if select is placed correctly already
-            if($input.parent(selector.dropdown).length > 0) {
-              module.debug('UI dropdown already exists. Creating dropdown menu only');
-              $module = $input.closest(selector.dropdown);
+            if($input.parent(selector.updropdown).length > 0) {
+              module.debug('UI updropdown already exists. Creating updropdown menu only');
+              $module = $input.closest(selector.updropdown);
               if( !module.has.menu() ) {
                 module.create.menu();
               }
@@ -355,12 +355,12 @@ $.fn.dropdown = function(parameters) {
               module.setup.menu(selectValues);
             }
             else {
-              module.debug('Creating entire dropdown from select');
+              module.debug('Creating entire updropdown from select');
               $module = $('<div />')
                 .attr('class', $input.attr('class') )
                 .addClass(className.selection)
-                .addClass(className.dropdown)
-                .html( templates.dropdown(selectValues) )
+                .addClass(className.updropdown)
+                .html( templates.updropdown(selectValues) )
                 .insertBefore($input)
               ;
               if($input.hasClass(className.multiple) && $input.prop('multiple') === false) {
@@ -371,7 +371,7 @@ $.fn.dropdown = function(parameters) {
                 module.set.multiple();
               }
               if ($input.prop('disabled')) {
-                module.debug('Disabling dropdown');
+                module.debug('Disabling updropdown');
                 $module.addClass(className.disabled);
               }
               $input
@@ -387,9 +387,9 @@ $.fn.dropdown = function(parameters) {
             $item = $menu.find(selector.item);
           },
           reference: function() {
-            module.debug('Dropdown behavior was called on select, replacing with closest dropdown');
+            module.debug('Dropdown behavior was called on select, replacing with closest updropdown');
             // replace module reference
-            $module  = $module.parent(selector.dropdown);
+            $module  = $module.parent(selector.updropdown);
             instance = $module.data(moduleNamespace);
             element  = $module.get(0);
             module.refresh();
@@ -469,7 +469,7 @@ $.fn.dropdown = function(parameters) {
             module.queryRemote(module.get.query(), module.show);
           }
           if( module.can.show() && !module.is.active() ) {
-            module.debug('Showing dropdown');
+            module.debug('Showing updropdown');
             if(module.has.message() && !(module.has.maxSelections() || module.has.allResultsFiltered()) ) {
               module.remove.message();
             }
@@ -497,7 +497,7 @@ $.fn.dropdown = function(parameters) {
             : function(){}
           ;
           if( module.is.active() && !module.is.animatingOutward() ) {
-            module.debug('Hiding dropdown');
+            module.debug('Hiding updropdown');
             if(settings.onHide.call(element) !== false) {
               module.animate.hide(function() {
                 module.remove.visible();
@@ -508,11 +508,11 @@ $.fn.dropdown = function(parameters) {
         },
 
         hideOthers: function() {
-          module.verbose('Finding other dropdowns to hide');
+          module.verbose('Finding other updropdowns to hide');
           $allModules
             .not($module)
               .has(selector.menu + '.' + className.visible)
-                .dropdown('hide')
+                .updropdown('hide')
           ;
         },
 
@@ -698,7 +698,7 @@ $.fn.dropdown = function(parameters) {
                   }
                 }
                 else {
-                  module.verbose('All items filtered, hiding dropdown', searchTerm);
+                  module.verbose('All items filtered, hiding updropdown', searchTerm);
                   module.hideMenu();
                 }
               }
@@ -930,7 +930,7 @@ $.fn.dropdown = function(parameters) {
             if(!settings.allowAdditions) {
               module.clear();
             }
-            module.debug('Creating dropdown with specified values', values);
+            module.debug('Creating updropdown with specified values', values);
             module.setup.menu({values: values});
             $.each(values, function(index, item) {
               if(item.selected == true) {
@@ -1506,7 +1506,7 @@ $.fn.dropdown = function(parameters) {
 
                 // escape (close menu)
                 if(pressedKey == keys.escape) {
-                  module.verbose('Escape key pressed, closing dropdown');
+                  module.verbose('Escape key pressed, closing updropdown');
                   module.hide();
                 }
 
@@ -1518,7 +1518,7 @@ $.fn.dropdown = function(parameters) {
                 }
                 // down arrow (open menu)
                 if(pressedKey == keys.downArrow && !module.is.visible()) {
-                  module.verbose('Down key pressed, showing dropdown');
+                  module.verbose('Down key pressed, showing updropdown');
                   module.show();
                   event.preventDefault();
                 }
@@ -1577,7 +1577,7 @@ $.fn.dropdown = function(parameters) {
               return true;
             }
             else {
-              module.verbose('Event occurred in dropdown, canceling callback');
+              module.verbose('Event occurred in updropdown, canceling callback');
               return false;
             }
           },
@@ -1599,7 +1599,7 @@ $.fn.dropdown = function(parameters) {
               return true;
             }
             else {
-              module.verbose('Event occurred in dropdown menu, canceling callback');
+              module.verbose('Event occurred in updropdown menu, canceling callback');
               return false;
             }
           }
@@ -1959,7 +1959,7 @@ $.fn.dropdown = function(parameters) {
                     }
                   }
                   else if(strict) {
-                    module.verbose('Ambiguous dropdown value using strict type check', $choice, value);
+                    module.verbose('Ambiguous updropdown value using strict type check', $choice, value);
                     if( optionValue === value || optionText === value) {
                       $selectedItem = $choice;
                       return true;
@@ -2260,7 +2260,7 @@ $.fn.dropdown = function(parameters) {
           },
           tabbable: function() {
             if( module.is.searchSelection() ) {
-              module.debug('Added tabindex to searchable dropdown');
+              module.debug('Added tabindex to searchable updropdown');
               $search
                 .val('')
                 .attr('tabindex', 0)
@@ -2270,7 +2270,7 @@ $.fn.dropdown = function(parameters) {
               ;
             }
             else {
-              module.debug('Added tabindex to dropdown');
+              module.debug('Added tabindex to updropdown');
               if( $module.attr('tabindex') === undefined) {
                 $module
                   .attr('tabindex', 0)
@@ -2999,7 +2999,7 @@ $.fn.dropdown = function(parameters) {
           },
           tabbable: function() {
             if( module.is.searchSelection() ) {
-              module.debug('Searchable dropdown initialized');
+              module.debug('Searchable updropdown initialized');
               $search
                 .removeAttr('tabindex')
               ;
@@ -3008,7 +3008,7 @@ $.fn.dropdown = function(parameters) {
               ;
             }
             else {
-              module.debug('Simple selection dropdown initialized');
+              module.debug('Simple selection updropdown initialized');
               $module
                 .removeAttr('tabindex')
               ;
@@ -3148,7 +3148,7 @@ $.fn.dropdown = function(parameters) {
             return $(event.target).closest($icon).length > 0;
           },
           alreadySetup: function() {
-            return ($module.is('select') && $module.parent(selector.dropdown).data(moduleNamespace) !== undefined && $module.prev().length === 0);
+            return ($module.is('select') && $module.parent(selector.updropdown).data(moduleNamespace) !== undefined && $module.prev().length === 0);
           },
           animating: function($subMenu) {
             return ($subMenu)
@@ -3215,7 +3215,7 @@ $.fn.dropdown = function(parameters) {
             return $module.hasClass(className.search);
           },
           searchSelection: function() {
-            return ( module.has.search() && $search.parent(selector.dropdown).length === 1 );
+            return ( module.has.search() && $search.parent(selector.updropdown).length === 1 );
           },
           selection: function() {
             return $module.hasClass(className.selection);
@@ -3694,7 +3694,7 @@ $.fn.dropdown = function(parameters) {
   ;
 };
 
-$.fn.dropdown.settings = {
+$.fn.updropdown.settings = {
 
   silent                 : false,
   debug                  : false,
@@ -3704,9 +3704,9 @@ $.fn.dropdown.settings = {
   on                     : 'click',    // what event should show menu action on item selection
   action                 : 'activate', // action on item selection (nothing, activate, select, combo, hide, function(){})
 
-  values                 : false,      // specify values to use for dropdown
+  values                 : false,      // specify values to use for updropdown
 
-  clearable              : false,      // whether the value of the dropdown can be cleared
+  clearable              : false,      // whether the value of the updropdown can be cleared
 
   apiSettings            : false,
   selectOnKeydown        : true,       // Whether selection should occur automatically when keyboard shortcuts used
@@ -3718,8 +3718,8 @@ $.fn.dropdown.settings = {
   throttle               : 200,        // How long to wait after last user input to search remotely
 
   context                : window,     // Context to use when determining if on screen
-  direction              : 'auto',     // Whether dropdown should always open in one direction
-  keepOnScreen           : true,       // Whether dropdown should check whether it is on screen before showing
+  direction              : 'auto',     // Whether updropdown should always open in one direction
+  keepOnScreen           : true,       // Whether updropdown should check whether it is on screen before showing
 
   match                  : 'both',     // what to match against with search selection (both, text, or label)
   fullTextSearch         : false,      // search anywhere in value (set to 'exact' to require exact matches)
@@ -3743,7 +3743,7 @@ $.fn.dropdown.settings = {
   allowTab               : true,       // add tabindex to element
   allowCategorySelection : false,      // allow elements with sub-menus to be selected
 
-  fireOnInit             : false,      // Whether callbacks should fire when initializing dropdown values
+  fireOnInit             : false,      // Whether callbacks should fire when initializing updropdown values
 
   transition             : 'auto',     // auto transition will slide down or up based on direction
   duration               : 200,        // duration of transition
@@ -3779,7 +3779,7 @@ $.fn.dropdown.settings = {
 
   /* Component */
   name           : 'Dropdown',
-  namespace      : 'dropdown',
+  namespace      : 'updropdown',
 
   message: {
     addResult     : 'Add <b>{term}</b>',
@@ -3790,7 +3790,7 @@ $.fn.dropdown.settings = {
   },
 
   error : {
-    action          : 'You called a dropdown action that was not defined',
+    action          : 'You called a updropdown action that was not defined',
     alreadySetup    : 'Once a select has been initialized behaviors must be called on the created ui dropdown',
     labels          : 'Allowing user additions currently requires the use of labels.',
     missingMultiple : '<select> requires multiple property to be set to correctly preserve multiple values',
