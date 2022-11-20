@@ -954,7 +954,7 @@ i.icon.dollar:before { content: "\f155"; }
 i.icon.dont:before { content: "\f05e"; }
 i.icon.dribble:before { content: "\f17d"; }
 i.icon.drivers.license:before { content: "\f2c2"; }
-i.icon.dropdown:before { content: "\f0d7"; }
+i.icon.updropdown:before { content: "\f0d7"; }
 i.icon.eercast:before { content: "\f2da"; }
 i.icon.emergency:before { content: "\f0f9"; }
 i.icon.envira.gallery:before { content: "\f299"; }
