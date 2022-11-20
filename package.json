@@ -47,7 +47,6 @@
   },
   "dependencies": {
     "better-console": "*",
-    "del": "*",
     "extend": "*",
     "gulp": "*",
     "gulp-autoprefixer": "*",
@@ -78,11 +77,13 @@
     "replace-ext": "*",
     "require-dot-file": "*",
     "wrench-sui": "^0.0.3",
-    "yamljs": "*"
+    "yamljs": "*",
+    "del": "*"
   },
   "devDependencies": {
     "@jsdevtools/npm-publish": "^1.4.3",
     "@octokit/rest": "^19.0.4",
+    "del": "6.1",
     "gulp-concat-filenames": "*",
     "gulp-debug": "^4.0.0",
     "gulp-git": "^2.10.1",
